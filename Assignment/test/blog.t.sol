@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
+
 import {blogApp} from "../src/blog.sol";
 import {Test, console} from "forge-std/Test.sol";
 
@@ -42,10 +43,6 @@ contract testblog is Test {
         BlogApp.createAccount(userAddress, username);
 
         // Assert that the user was successfully registered
-        assertEq(
-            BlogApp.getUsername(userAddress),
-            username,
-            "Username not set correctly"
-        );
+        assertEq(BlogApp.getUsername(userAddress), username, "Username not set correctly");
     }
 }

@@ -56,26 +56,16 @@ contract blogApp {
     }
 
     // Create new post with Details
-    function createPost(
-        uint256 _postId,
-        string memory _text,
-        string memory _description
-    ) external {
+    function createPost(uint256 _postId, string memory _text, string memory _description) external {
         require(_postId != 0, "Post ID cant'be empty");
         require(!checkUserExists(msg.sender), "Create an account first!");
 
-        allPost[_postId] = postDetails({
-            uploader: msg.sender,
-            timestamp: block.timestamp,
-            title: _text,
-            decriptions: _description
-        });
+        allPost[_postId] =
+            postDetails({uploader: msg.sender, timestamp: block.timestamp, title: _text, decriptions: _description});
     }
 
     // Returns all the post messages communicated in a channel
-    function readPost(
-        uint256 _postId
-    ) external view returns (postDetails memory) {
+    function readPost(uint256 _postId) external view returns (postDetails memory) {
         return allPost[_postId];
     }
 }
